@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# Player saves
+save/
+
+# Node modules
+node_modules/
+
+# Editor backups
+*~
+*.bak
+
+# Logs
+*.log
