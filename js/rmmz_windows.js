@@ -1878,7 +1878,8 @@ Window_MenuCommand.prototype.addFormationCommand = function() {
 };
 
 Window_MenuCommand.prototype.addOriginalCommands = function() {
-    //
+    this.addCommand("Go to City", "goToCity", true);
+    this.addCommand("Go to Apartment", "goToApartment", true);
 };
 
 Window_MenuCommand.prototype.addOptionsCommand = function() {

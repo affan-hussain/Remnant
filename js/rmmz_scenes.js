@@ -807,6 +807,17 @@ Scene_Map.prototype.start = function() {
 Scene_Map.prototype.onTransferEnd = function() {
     this._mapNameWindow.open();
     $gameMap.autoplay();
+    $gameScreen.showPicture(
+        1,
+        "pizza_shop_hint",
+        0,
+        Graphics.boxWidth - 360 - 8,
+        8,
+        100,
+        100,
+        255,
+        0
+    );
     if (this.shouldAutosave()) {
         this.requestAutosave();
     }
@@ -1383,9 +1394,21 @@ Scene_Menu.prototype.createCommandWindow = function() {
     commandWindow.setHandler("options", this.commandOptions.bind(this));
     commandWindow.setHandler("save", this.commandSave.bind(this));
     commandWindow.setHandler("gameEnd", this.commandGameEnd.bind(this));
+    commandWindow.setHandler("goToCity", this.commandGoToCity.bind(this));
+    commandWindow.setHandler("goToApartment", this.commandGoToApartment.bind(this));
     commandWindow.setHandler("cancel", this.popScene.bind(this));
     this.addWindow(commandWindow);
     this._commandWindow = commandWindow;
+};
+
+Scene_Menu.prototype.commandGoToCity = function() {
+    this.popScene();
+    $gamePlayer.reserveTransfer(5, 4, 9, 2, 0);
+};
+
+Scene_Menu.prototype.commandGoToApartment = function() {
+    this.popScene();
+    $gamePlayer.reserveTransfer(2, 10, 12, 2, 0);
 };
 
 Scene_Menu.prototype.commandWindowRect = function() {
